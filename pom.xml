@@ -135,7 +135,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>6.0.5</version>
+			<version>8.0.11</version>
 		</dependency>
 		<!-- spring-jdbc 추가 -->
 		<dependency>

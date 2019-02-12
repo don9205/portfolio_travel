@@ -18,10 +18,10 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver"></property>
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/테이블이름?useSSL=false&amp;serverTimezone=UTC">
+			value="jdbc:mysql://localhost:3306/travel?useSSL=false&amp;serverTimezone=UTC">
 		</property>
-		<property name="username" value="mysql아이디"></property>
-		<property name="password" value="mysql비밀번호"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="cjgreen"></property>
 	</bean>
 
   <!-- 2019.01.25 mappers의 root-context.xml 관련 수정 Namespaces에 aop,beans,context,jdbc,mybatis-spring 체크 -->

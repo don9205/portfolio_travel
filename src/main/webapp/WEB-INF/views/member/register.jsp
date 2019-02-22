@@ -1,24 +1,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="//code.jquery.com/jquery-3.3.1.js"></script>    
+<script src="//code.jquery.com/jquery-3.3.1.js"></script>
+<script src="../resources/js/validate.js"></script>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>회원가입 페이지</title>
+<style>
+	.member{
+	margin:0 auto;
+	}
+	label.error{
+		color: red;
+		display: block;	
+	}
+</style>
 </head>
 <body>
-	<div>회원가입</div>
-	<form method="post" action="<%=request.getContextPath()%>/member/register">
-	<table border="1px solid black">
+	<div style="text-align:center">회원가입</div>
+	<form method="post" action="<%=request.getContextPath()%>/member/register" id="myform">
+	<table class="member" border="1px solid black">
 		<tr>
 			<td>이름</td>
-			<td><input type="text"></td>
+			<td><input type="text" name="name"></td>
 		</tr>
 		<tr>
 			<td>아이디</td>
 			<td><input type="text" name="id"></td>
-			<td><button id="btnOk">중복확인</button>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
@@ -26,8 +35,7 @@
 		</tr>
 		<tr>
 			<td>비밀번호 확인</td>
-			<td><input type="password" id="pwc"></td>
-			<td><button id="btnPwOk">비밀번호 확인</button>
+			<td><input type="password" id="pwc" name="pwc"></td>
 		</tr>
 		<tr>
 			<td>성별</td>
@@ -38,11 +46,7 @@
 		</tr>
 		<tr>
 			<td>이메일</td>
-			<td><input type="email" name="email" id="email1">@
-			<select id="email2">
-				<option>com</option>
-				<option>net</option>
-			</select>
+			<td><input type="email" name="email" id="email">
 			</td>
 		</tr>
 		<tr>
@@ -52,7 +56,7 @@
 	</table>
 	</form>
 </body>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(document).ready(function() {
 			
 			var pw = $('#pw');
@@ -69,5 +73,5 @@
 		});
 	
 	});
-</script>
+</script> -->
 </html>

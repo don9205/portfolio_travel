@@ -144,6 +144,27 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 		
+		<!-- 2019.02.22 시큐리티 의존성 추가 -->
+		<!--스프링시큐리티 web 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		<!--스프링시큐리티 core 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		<!--스프링시큐리티 config 라이브러리 -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+		
+		
 	</dependencies>
 	<build>
 		<plugins>

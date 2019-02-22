@@ -2,15 +2,25 @@ package kr.lee.travel.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.lee.travel.service.AccountService;
 import kr.lee.travel.vo.AccountVo;
+
+
+
+
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	AccountService accountService;
+	
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainGet(Model model) {
@@ -31,12 +41,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/member/login", method = RequestMethod.POST)
-	public String loginPost(Model model, HttpServletRequest request) {
+	public String loginPost(Model model, HttpServletRequest request, AccountVo loginInfo) {
 
-		String id = request.getParameter("id");
-		String pw = request.getParameter("pw");
-		System.out.println(id);
-		System.out.println(pw);
+		AccountVo user = accountService.signin(loginInfo);
+		model.addAttribute("user", user);
+
 		return "redirect:/";
 	}
 	
@@ -49,10 +58,11 @@ public class MainController {
 	}
 	
 	@RequestMapping(value = "/member/register", method = RequestMethod.POST)
-	public String registerPost(Model model) {
-		
-		
-		return "redirect:/";
+	public String registerPost(Model model, AccountVo userInfo) {
+		boolean isMember = accountService.signUp(userInfo);
+		if(isMember)
+			return "redirect:/";
+		return "/member/register";
 	}
 	
 

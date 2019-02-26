@@ -4,9 +4,11 @@ import kr.lee.travel.vo.AccountVo;
 
 public interface AccountService {
 
-	AccountVo signin(AccountVo loginInfo);
+	public AccountVo signin(AccountVo loginInfo);
 
-	boolean signUp(AccountVo userInfo);
+	public boolean signUp(AccountVo userInfo);
+
+	public boolean isDuplicated(String id);
 
 
 }

@@ -17,11 +17,14 @@ public class AccountServiceImp implements AccountService {
 		// TODO Auto-generated method stub
 		
 		AccountVo user = accountDao.getAccount(loginInfo.getId());
-		if(loginInfo.getPw() == user.getPw()) {
+		if(user != null && loginInfo.getPw().equals(user.getPw())) {
 			return user;
+		} else {
+			
+			System.out.println("일치하지 않습니다");
+			return null;
 		}
-		
-		return null;
+
 	}
 
 	@Override
@@ -31,6 +34,13 @@ public class AccountServiceImp implements AccountService {
 		return false;
 		accountDao.setAccount(userInfo);
 		return true;
+	}
+
+	@Override
+	public boolean isDuplicated(String id) {
+		if(accountDao.getAccount(id) != null)
+			return true;
+		return false;
 	}
 	
 }

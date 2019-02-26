@@ -14,7 +14,7 @@
 	<div class="top-up">
 		메 인 페 이 지
 	<div class="log-box">
-		<a href="<%=request.getContextPath()%>/member/login">로그인</a>
+		<a href="<%=request.getContextPath()%>/member/login" style="<c:if test="${user != null }">display:none;</c:if>">로그인</a>
 		<a href="<%=request.getContextPath()%>/member/register">회원가입</a>
 		<a href="#">마이페이지</a>
 	</div>	

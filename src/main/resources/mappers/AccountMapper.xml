@@ -10,7 +10,7 @@
 		id=#{id}
 	</select>
 	<insert id="setAccount">
-		insert into account(id, pw, email, gender)
-		values(#{user.id},#{user.pw},#{user.email},#{user.gender})
+		insert into account(name, id, pw, email, gender)
+		values(#{user.name},#{user.id},#{user.pw},#{user.email},#{user.gender})
 	</insert>
 </mapper>

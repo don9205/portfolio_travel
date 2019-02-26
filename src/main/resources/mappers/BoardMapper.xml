@@ -4,4 +4,67 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.lee.travel.dao.BoardDao">
 
+	<insert id="setBoard">
+		insert into travel_board(id, title, contents)
+		values(#{board.id}, #{board.title},#{board.contents})
+	</insert>
+
+	<update id="updateBoard">
+		update travel_board
+		set title = #{board.title},
+		contents =
+		#{board.contents},
+		state = #{board.state}
+		where num = #{board.num}
+	</update>
+
+
+	<select id="getBoard" resultType="kr.lee.travel.vo.BoardVo">
+		select * from travel_board
+		where num = #{num} and state = 'Y'
+	</select>
+
+
+	<select id="getBoards" resultType="kr.lee.travel.vo.BoardVo">
+		select * from travel_board
+		where
+		state = 'Y' order by num desc
+	</select>
+
+	<select id="getCountUserLists" resultType="int">
+		<!-- 페이징처리시필요.(전체개수) -->
+		select count(num) from travel_board
+		<if test="cri.type==0">
+			where state = 'Y' and title like concat('%', #{cri.search},'%')
+		</if>
+		<if test="cri.type==1">
+			where state = 'Y' and id like concat('%', #{cri.search},'%')
+		</if>
+		<if test="cri.type==2">
+			where state = 'Y' and num like concat('%', #{cri.search},'%')
+		</if>
+		;
+	</select>
+
+	<select id="getUserLists" resultType="kr.lee.travel.vo.BoardVo">
+		<!-- 페이징처리시필요. -->
+		select * from travel_board
+		<if test="cri.type==null">
+			where state = 'Y'
+		</if>
+		<if test="cri.type==0">
+			where state = 'Y' and title like concat('%', #{cri.search},'%')
+		</if>
+		<if test="cri.type==1">
+			where state = 'Y' and id like concat('%', #{cri.search},'%')
+		</if>
+		<if test="cri.type==2">
+			where state = 'Y' and num like concat('%', #{cri.search},'%')
+		</if>
+		order by num desc limit
+		#{cri.startPage},#{cri.perPagenum};
+	</select>
+
+
+
 </mapper>

@@ -58,14 +58,14 @@
 			<beans:ref bean="loginInterceptor" />
 		</interceptor>
 		<interceptor>
+			<mapping path="/" />
 			<mapping path="/bbs/travel_board_register" />
-<!-- 			<mapping path="/bbs/delete" />
-			<mapping path="/bbs/update" /> -->
+
 			<beans:ref bean="AuthInterceptor" />
 		</interceptor>
 		<interceptor>
 			<mapping path="/" />
-			<mapping path="/regiser" />
+			<mapping path="/bbs/travel_board" />
 			<beans:ref bean="UnauthInterceptor" />
 		</interceptor>
 	</interceptors>

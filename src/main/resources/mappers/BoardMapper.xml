@@ -21,45 +21,42 @@
 
 	<select id="getBoard" resultType="kr.lee.travel.vo.BoardVo">
 		select * from travel_board
-		where num = #{num} and state = 'Y'
+		where num = #{num} and state ='Y'
 	</select>
 
 
 	<select id="getBoards" resultType="kr.lee.travel.vo.BoardVo">
 		select * from travel_board
 		where
-		state = 'Y' order by num desc
+		state ='Y' order by num desc
 	</select>
 
 	<select id="getCountUserLists" resultType="int">
 		<!-- 페이징처리시필요.(전체개수) -->
-		select count(num) from travel_board
+		select count(num) from travel_board where state='Y'
 		<if test="cri.type==0">
-			where state = 'Y' and title like concat('%', #{cri.search},'%')
+		 and title like concat('%', #{cri.search},'%')
 		</if>
 		<if test="cri.type==1">
-			where state = 'Y' and id like concat('%', #{cri.search},'%')
+		 and id like concat('%', #{cri.search},'%')
 		</if>
 		<if test="cri.type==2">
-			where state = 'Y' and num like concat('%', #{cri.search},'%')
+		 and num like concat('%', #{cri.search},'%')
 		</if>
 		;
 	</select>
 
 	<select id="getUserLists" resultType="kr.lee.travel.vo.BoardVo">
 		<!-- 페이징처리시필요. -->
-		select * from travel_board
-		<if test="cri.type==null">
-			where state = 'Y'
-		</if>
+		select * from travel_board where state='Y'
 		<if test="cri.type==0">
-			where state = 'Y' and title like concat('%', #{cri.search},'%')
+		 and title like concat('%', #{cri.search},'%')
 		</if>
 		<if test="cri.type==1">
-			where state = 'Y' and id like concat('%', #{cri.search},'%')
+		 and id like concat('%', #{cri.search},'%')
 		</if>
 		<if test="cri.type==2">
-			where state = 'Y' and num like concat('%', #{cri.search},'%')
+		 and num like concat('%', #{cri.search},'%')
 		</if>
 		order by num desc limit
 		#{cri.startPage},#{cri.perPagenum};

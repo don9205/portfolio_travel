@@ -44,11 +44,10 @@
 
 
 
-			<button class="form-group">게시글 등록하기</button>
+			<button class="btn btn-primary">게시글 등록하기</button>
 
 
-			<a href="<%=request.getContextPath()%>/bbs/travel_board">게시판으로
-				돌아가기</a>
+			<a href="<%=request.getContextPath()%>/bbs/travel_board"><button class="btn btn-info">게시판으로 돌아가기</button></a>
 
 
 		</div>
